@@ -2,31 +2,38 @@ class sceneA extends Phaser.Scene {
     constructor() {
         super({ key: 'sceneA' });
     } //constracter 
-    /*  preload() {
- 
-     } */
+    preload() {
+        //this.load.image('nine12', 'assets/Number2nd_9.png');
+
+    }
 
     create() {
         var graphics;
 
-        this.add.text(60, 120, 'Are You Smarter Than 5th Grader?', { font: '22px Courier', color: '000000' });
-        this.add.text(60, 170, 'Welcome to a Number Game!', { font: '22px Courier', color: '000000' });
+        this.add.text(200, 120, 'Number Game!', { font: '32px Courier', color: '000000' });
+        this.add.text(200, 170, 'Find Mutiplication of 3', { font: '22px Courier', color: '000000' });
+        this.add.text(200, 200, 'You have  10s to complete!', { font: '32px Courier', color: '000000' });
         graphics = this.add.graphics();
         graphics.fillStyle(0xffd900, 1)
-        graphics.fillRect(150, 200, 450, 200);
-        this.add.text(150, 300, 'PUSH ENTER KEY TO START', { font: '32px Courier', color: '000000' });
+        graphics.fillRect(200, 270, 450, 100);
+        this.add.text(200, 300, 'PUSH ENTER KEY TO START', { font: '32px Courier', color: '000000' });
 
-       //enter key to start game scene
-        this.enterKey = this.input.keyboard.addKey('ENTER');
+        //enter key to start game scene
+        this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+
 
     }
 
     update() {
         //updating enter key
-        this.enterKey.on('down', function (event) {
-
+        if (Phaser.Input.Keyboard.JustDown(this.enterKey)) {
+            this.cameras.main.shake(500);
             this.scene.start('sceneB');
-        }, this);
+
+        }
+
+
     }
+
 
 }
