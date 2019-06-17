@@ -5,7 +5,6 @@ class sceneB extends Phaser.Scene {
         super({ key: 'sceneB' });
     }
 
-
     preload() {
         this.load.image('one', 'assets/Number0.png');
         this.load.image('two', 'assets/Number2.png');
@@ -51,17 +50,13 @@ class sceneB extends Phaser.Scene {
             this.ImageClick(gameObject);
         }, this);
 
-
-
         // this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.timer = this.time.addEvent({
             delay: 500,
             callback: this.GameTimer,
             callbackScope: this,
             loop: true
-        }, this);
-      
-
+        }, this);     
 
     }
     ImageClick(gameObject) {
@@ -137,8 +132,6 @@ class sceneB extends Phaser.Scene {
                 this.scoreText.setText('Score: ' + this.score);
                 this.wrongNum.play();
                 break;
-
-
         }
 
     }
@@ -146,11 +139,11 @@ class sceneB extends Phaser.Scene {
     GameTimer() {
         this.timeCount -= 1;
         this.timeText.setText('Time: ' + this.timeCount);
-        if (this.timeCount == 0) {
-            this.scene.start('endGame');
+        if (this.timeCount == 0 && this.score == 6) {
+            this.scene.sleep('sceneB');
+            this.scene.start('endGame',{score:this.score});
 
-        }
-      
+        }     
     }
 
     update() {
