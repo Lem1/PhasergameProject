@@ -7,14 +7,17 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 300 },
+            gravity: {
+                y: 0,
+                x: 0
+            },
             debug: false
         }
     },
     audio: {
         disableWebAudio: true
     },
-    scene: [sceneA, sceneB, endGame],
+    scene: [sceneA, sceneB, endGame, MathFactsStart, MathFactsGame, MathFactsOutcome],
     backgroundColor: "#F08080"
 
 };

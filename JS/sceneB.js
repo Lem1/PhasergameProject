@@ -18,14 +18,12 @@ class sceneB extends Phaser.Scene {
         this.load.image('six2', 'assets/Number2nd_6.png');
         this.load.image('nine2', 'assets/Number2nd_9.png');
         this.load.audio('buzz', 'assets/Buzz.mp3');
-
-
     }
 
 
     create() {
         this.score = 0;
-        this.timeCount = 10;
+        this.timeCount = 5;
         this.wrongNum = this.sound.add('buzz');
 
         this.six = this.add.image(250, 250, 'six').setInteractive();
@@ -50,15 +48,14 @@ class sceneB extends Phaser.Scene {
             this.ImageClick(gameObject);
         }, this);
 
-        // this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.timer = this.time.addEvent({
             delay: 500,
             callback: this.GameTimer,
             callbackScope: this,
             loop: true
-        }, this);     
-
+        }, this);
     }
+
     ImageClick(gameObject) {
         switch (gameObject) {
             case this.six:
@@ -139,16 +136,13 @@ class sceneB extends Phaser.Scene {
     GameTimer() {
         this.timeCount -= 1;
         this.timeText.setText('Time: ' + this.timeCount);
-        if (this.timeCount == 0) {
+        if (this.timeCount == 0 || this.score == 6 ) {
             this.scene.sleep('sceneB');
-            this.scene.start('endGame',{score:this.score});
-
-        }     
+            this.scene.start('endGame', {score: this.score});
+        }
     }
 
     update() {
-     
 
     }
-
 }
