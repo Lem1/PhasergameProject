@@ -139,7 +139,7 @@ class sceneB extends Phaser.Scene {
     GameTimer() {
         this.timeCount -= 1;
         this.timeText.setText('Time: ' + this.timeCount);
-        if (this.timeCount == 0 && this.score == 6) {
+        if (this.timeCount == 0) {
             this.scene.sleep('sceneB');
             this.scene.start('endGame',{score:this.score});
 
