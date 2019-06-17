@@ -12,7 +12,7 @@ class sceneA extends Phaser.Scene {
 
         this.add.text(200, 120, 'Number Game!', { font: '32px Courier', color: '000000' });
         this.add.text(200, 170, 'Find Mutiplication of 3', { font: '22px Courier', color: '000000' });
-        this.add.text(200, 200, 'You have  5sec to complete!', { font: '32px Courier', color: '000000' });
+        this.add.text(200, 200, 'You have  10sec to complete!', { font: '32px Courier', color: '000000' });
         graphics = this.add.graphics();
         graphics.fillStyle(0xffd900, 1)
         graphics.fillRect(200, 270, 450, 100);
